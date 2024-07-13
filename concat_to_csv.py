@@ -20,7 +20,7 @@ for filename in os.listdir(folder_path):
 combined_df = pd.concat(all_data_frames, ignore_index=True)
 
 # Path to the output combined CSV file
-output_csv_path = '/content/trip_data/processed_data.csv'
+output_csv_path = '/content/trip_data/combined_file.csv'
 
 # Write the combined DataFrame to a single CSV file
 combined_df.to_csv(output_csv_path, index=False)
