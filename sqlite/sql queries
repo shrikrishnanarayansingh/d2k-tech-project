@@ -1,0 +1,31 @@
+-- Develop SQL queries to answer the following questions:
+-- What are the peak hours for taxi usage?
+-- How does passenger count affect the trip fare?
+-- What are the trends in usage over the year?
+
+
+-- Query to find peak hours for taxi usage
+SELECT
+    strftime('%H', tpep_pickup_datetime) AS hour_of_day,
+    COUNT(*) AS num_trips
+FROM processed_data
+GROUP BY hour_of_day
+ORDER BY num_trips DESC
+LIMIT 5;
+
+-- Query to analyze how passenger count affects trip fare
+SELECT
+     passenger_count,
+    avg(fare_amount) AS avg_fare
+FROM processed_data
+GROUP BY passenger_count
+ORDER BY passenger_count;
+
+
+-- Query to analyze trends in taxi usage over the year
+SELECT
+    strftime('%Y-%m', tpep_pickup_datetime) AS year_month,
+    COUNT(*) AS num_trips
+FROM processed_data
+GROUP BY year_month
+ORDER BY year_month;
